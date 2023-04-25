@@ -14,3 +14,21 @@
   font-weight: 900;
   font-size: 16px;
 }
+
+.loader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(236, 230, 230);
+  opacity: 0.85;
+  z-index: 100000;
+}
+
+.load {
+  font-size: 3rem;
+}

@@ -1,15 +1,15 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { DataGrid } from "@material-ui/data-grid";
-import { Link, useNavigate } from "react-router-dom";
 import "./OtherDetails.css"
+import Loader from './Loader';
 import axios from "axios"
 
 const EmployeeDetails = ({id}) => {
 
       console.log(id,"i am id")
       const [employees,setEmployees] = useState([]);
+            const[loading,setLoading] = useState(true);
       const fetchData = async()=>{
          const config = {
       headers: { "Content-Type": "application/json" },
@@ -20,6 +20,7 @@ const EmployeeDetails = ({id}) => {
     );
     console.log(data,"i am data")
     setEmployees(data.employees)
+    setLoading(false)
     console.log(employees,"i am employees")
       }
       useEffect(() => {
@@ -54,10 +55,13 @@ const EmployeeDetails = ({id}) => {
 
   return (
     <>
- {  employees  &&
-      <div className="dashboard">
+     {
+      loading ? (
+        <Loader />
+      ) :(
+          <div className="dashboard">
         <div className="productListContainer">
-          <h1 className="productListHeading">Average Income Data</h1>
+          <h1 id="productListHeading">EMPLOYEE'S DATA</h1>
 
           <DataGrid
             rows={rows}
@@ -69,7 +73,8 @@ const EmployeeDetails = ({id}) => {
           />
         </div>
       </div>
-}
+      )
+    }
     </>
   
   )
