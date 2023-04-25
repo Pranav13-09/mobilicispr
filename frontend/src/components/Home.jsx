@@ -3,17 +3,19 @@ import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { Link, useNavigate } from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
+import "./OtherDetails.css"
 
 
 const Home = () => {
       const columns = [
-    { field: "task", headerName: "Task", minWidth: 300, flex: 0.6 },
+    { field: "task", headerName: "Task", minWidth: 300, flex: 0.6,headerClassName: 'first' },
     {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
       minWidth: 150,
       type: "number",
+      headerClassName: 'first',
       sortable: false,
       renderCell: (params) => {
         return (

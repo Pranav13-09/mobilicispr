@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import axios from "axios"
+import "./OtherDetails.css";
 
 const EmployeeDetails = ({id}) => {
       const [employees,setEmployees] = useState([]);
@@ -10,7 +11,7 @@ const EmployeeDetails = ({id}) => {
       headers: { "Content-Type": "application/json" },
     };
     const { data } = await axios.get(
-    `/api/${id}`,
+   `https://mobiserver.vercel.app/api/${id}`,
       config
     );
     console.log(data,"i am data")
@@ -26,14 +27,14 @@ const EmployeeDetails = ({id}) => {
 
             const columns = [
 
-    { field: "first_name", headerName: "Name", minWidth: 200, flex: 0.3 },
-     { field: "email", headerName: "Email", minWidth: 275, flex: 0.5 },
-      { field: "gender", headerName: "Gender", minWidth: 100, flex: 0.2 },
-      { field: "income", headerName: "Income", minWidth: 100, flex: 0.2 },
-      { field: "city", headerName: "City", minWidth: 100, flex: 0.3 },
-      { field: "car", headerName: "Car", minWidth: 100, flex: 0.2 },
-       { field: "phonePrice", headerName: "Price", minWidth: 100, flex: 0.2 },
-      { field: "quote", headerName: "Quote", minWidth: 275, flex: 0.6 }
+    { field: "first_name", headerName: "Name", minWidth: 200, flex: 0.3, headerClassName: 'first',},
+     { field: "email", headerName: "Email", minWidth: 275, flex: 0.5,headerClassName: 'first' },
+      { field: "gender", headerName: "Gender", minWidth: 150, flex: 0.2,headerClassName: 'first' },
+      { field: "income", headerName: "Income", minWidth: 150, flex: 0.2 ,headerClassName: 'first'},
+      { field: "city", headerName: "City", minWidth: 100, flex: 0.3 ,headerClassName: 'first'},
+      { field: "car", headerName: "Car", minWidth: 100, flex: 0.2 ,headerClassName: 'first'},
+       { field: "phonePrice", headerName: "Price", minWidth: 125, flex: 0.2,headerClassName: 'first' },
+      { field: "quote", headerName: "Quote", minWidth: 275, flex: 0.6 ,headerClassName: 'first'}
      
   ];
 
@@ -49,7 +50,7 @@ const EmployeeDetails = ({id}) => {
         income:item.income,
         city:item.city,
         car:item.car,
-        phonePrice:item.phone_price,
+        phonePrice:parseInt(item.phone_price),
         quote:item.quote
       });
     });
@@ -59,8 +60,7 @@ const EmployeeDetails = ({id}) => {
  {  employees  &&
       <div className="dashboard">
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL API'S</h1>
-
+          <h1 className="productListHeading">EMPLOYEE DATA</h1>
           <DataGrid
             rows={rows}
             columns={columns}

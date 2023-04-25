@@ -1,0 +1,16 @@
+.productListContainer {
+  padding: 20px;
+}
+
+.productListHeading {
+  text-align: center;
+}
+
+.productListTable {
+  box-shadow: 0 0 0 1px rgb(143, 140, 140);
+}
+
+.MuiDataGrid-root .first .MuiDataGrid-columnHeaderTitle {
+  font-weight: 900;
+  font-size: 16px;
+}

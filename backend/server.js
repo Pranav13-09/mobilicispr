@@ -1,9 +1,15 @@
 const app = require("./app");
 
 const Port = process.env.PORT || 80;
+const cors = require("cors");
 // const dotenv = require("dotenv");
 
 // dotenv.config({ path: "backend/config/config.env" });
+const corsOptions = {
+  origin: "https://mobi-frontend.vercel.app",
+  methods: ["GET", "POST"],
+};
+app.use(cors(corsOptions));
 
 require("dotenv").config();
 

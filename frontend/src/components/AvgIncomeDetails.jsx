@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DataGrid } from "@material-ui/data-grid";
 import { Link, useNavigate } from "react-router-dom";
+import "./OtherDetails.css"
 import axios from "axios"
 
 const EmployeeDetails = ({id}) => {
@@ -14,7 +15,7 @@ const EmployeeDetails = ({id}) => {
       headers: { "Content-Type": "application/json" },
     };
     const { data } = await axios.get(
-    `/api/${id}`,
+   `https://mobiserver.vercel.app/api/${id}`,
       config
     );
     console.log(data,"i am data")
@@ -29,9 +30,9 @@ const EmployeeDetails = ({id}) => {
       
 
             const columns = [
-         { field: "city", headerName: "City", minWidth: 100, flex: 0.3 },
-      { field: "income", headerName: "Income", minWidth: 100, flex: 0.2 },
-      { field: "count", headerName: "Number of users", minWidth: 300, flex: 0.2 },
+         { field: "city", headerName: "City", minWidth: 100, flex: 0.3, headerClassName: 'first' },
+      { field: "income", headerName: "Income", minWidth: 100, flex: 0.2, headerClassName: 'first' },
+      { field: "count", headerName: "Number of users", minWidth: 300, flex: 0.2 , headerClassName: 'first'},
    
    
      
@@ -56,7 +57,7 @@ const EmployeeDetails = ({id}) => {
  {  employees  &&
       <div className="dashboard">
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL API'S</h1>
+          <h1 className="productListHeading">Average Income Data</h1>
 
           <DataGrid
             rows={rows}
